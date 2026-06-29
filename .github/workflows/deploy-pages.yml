@@ -1,0 +1,60 @@
+name: Deploy to GitHub Pages (docs/)
+
+# Builds the static export (output: export) and commits it to /docs on main,
+# so GitHub Pages "Deploy from a branch → main /docs" serves the site.
+# Coolify keeps using the Dockerfile (output: standalone) untouched.
+
+on:
+  push:
+    branches: [main]
+    # Avoid an infinite loop: the bot commit below only touches docs/**.
+    paths-ignore:
+      - "docs/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-docs
+  cancel-in-progress: true
+
+jobs:
+  build-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site
+        run: npm run build:pages
+        env:
+          NEXT_PUBLIC_SITE_URL: https://www.tradesika.com
+
+      - name: Assemble docs/ folder
+        run: |
+          rm -rf docs
+          mv out docs
+          touch docs/.nojekyll
+          echo "www.tradesika.com" > docs/CNAME
+
+      - name: Commit docs/ if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs
+          if git diff --cached --quiet; then
+            echo "No changes in docs/ — nothing to commit."
+          else
+            git commit -m "chore(pages): rebuild static site [skip ci]"
+            git push
+          fi
