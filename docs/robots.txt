@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://www.tradesika.com
+Sitemap: https://www.tradesika.com/sitemap.xml
