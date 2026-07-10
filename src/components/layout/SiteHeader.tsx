@@ -64,7 +64,7 @@ export function SiteHeader() {
         )}
       >
         <div className="container-x flex h-[72px] items-center justify-between">
-          <Logo imgSize="h-28" />
+          <Logo imgSize="h-36" />
 
           <nav className="hidden items-center gap-1 lg:flex">
             {NAV_LINKS.map((link) => (
