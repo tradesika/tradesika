@@ -51,15 +51,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     });
   }
   const category = getCategory(product);
+  const intro = (product.tagline || product.description?.slice(0, 110) || product.name)
+    .trim()
+    .replace(/\.+$/, "");
   return buildMetadata({
-    title: product.name,
+    title: `${product.name} en Guayaquil`,
     path: `/productos/${product.slug}`,
-    description:
-      product.description?.slice(0, 200) ||
-      product.tagline ||
-      `${product.name} — disponible en Tradesika, distribuidor Sika en Ecuador.`,
+    description: `${intro}. Compra ${product.name} en Tradesika, distribuidor autorizado Sika en Guayaquil. Cotiza por WhatsApp con asesoría técnica.`,
     image: product.image?.url,
-    keywords: [product.name, "Sika", category?.name ?? ""].filter(Boolean),
+    keywords: [
+      product.name,
+      `comprar ${product.name}`,
+      `${product.name} Guayaquil`,
+      `${product.name} Ecuador`,
+      `precio ${product.name} Ecuador`,
+      "Sika",
+      category?.name ?? "",
+    ].filter(Boolean),
   });
 }
 

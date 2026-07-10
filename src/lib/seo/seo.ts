@@ -7,6 +7,29 @@ import { getCategory } from "@/domain/catalog/catalog.types";
 const SITE_URL = getSiteUrl();
 const DEFAULT_OG_IMAGE = ASSETS.heroJobsite.url;
 
+/**
+ * Keywords base para todo el sitio, deducidas de cómo se busca un distribuidor
+ * Sika en Ecuador: intención transaccional (dónde comprar / venta / cotizar),
+ * navegacional (distribuidor autorizado / tienda) y geolocalizada (Guayaquil).
+ */
+export const SEO_KEYWORDS = [
+  "distribuidores especializados Sika en Guayaquil",
+  "dónde comprar productos Sika en Guayaquil",
+  "distribuidor autorizado Sika Guayaquil",
+  "distribuidor Sika Ecuador",
+  "venta de productos Sika en Guayaquil",
+  "tienda de productos Sika Guayaquil",
+  "comprar Sika en Ecuador",
+  "Sika Guayaquil",
+  "Sika Ecuador",
+  "impermeabilizantes Sika Guayaquil",
+  "selladores Sikaflex Guayaquil",
+  "productos Sika al por mayor Ecuador",
+  "cotizar productos Sika Guayaquil",
+  "asesoría técnica Sika Ecuador",
+  "materiales de construcción Guayaquil",
+];
+
 interface PageMetaInput {
   title: string;
   description: string;
@@ -31,14 +54,7 @@ export function buildMetadata({
   return {
     title: fullTitle,
     description,
-    keywords: [
-      "Sika Ecuador",
-      "distribuidor Sika",
-      "Sika Guayaquil",
-      "impermeabilizantes",
-      "materiales de construcción",
-      ...keywords,
-    ],
+    keywords: [...SEO_KEYWORDS, ...keywords],
     metadataBase: new URL(SITE_URL),
     alternates: { canonical: url },
     openGraph: {
@@ -74,6 +90,14 @@ export function organizationJsonLd() {
     alternateName: SITE.name,
     url: SITE_URL,
     description: SITE.description,
+    slogan: SITE.shortTagline,
+    knowsAbout: [
+      "Impermeabilización",
+      "Selladores y adhesivos",
+      "Morteros y reparación de concreto",
+      "Aditivos para hormigón",
+      "Pisos industriales",
+    ],
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE.address.street,
@@ -113,7 +137,12 @@ export function websiteJsonLd() {
   };
 }
 
-export function localBusinessJsonLd() {
+/**
+ * LocalBusiness enriquecido para búsquedas "distribuidor / dónde comprar Sika
+ * en Guayaquil". `offerCatalog` (nombres de categorías del repositorio) señala
+ * explícitamente qué líneas de producto vende el negocio.
+ */
+export function localBusinessJsonLd(offerCatalog: string[] = []) {
   const sameAs = [SITE.social.facebook, SITE.social.instagram].filter(Boolean);
   return {
     "@context": "https://schema.org",
@@ -122,6 +151,9 @@ export function localBusinessJsonLd() {
     name: SITE.legalName,
     alternateName: SITE.name,
     description: SITE.description,
+    slogan: SITE.shortTagline,
+    keywords: SEO_KEYWORDS.join(", "),
+    brand: { "@type": "Brand", name: "Sika" },
     image: DEFAULT_OG_IMAGE,
     logo: `${SITE_URL}/logo.png`,
     url: SITE_URL,
@@ -152,12 +184,39 @@ export function localBusinessJsonLd() {
     ],
     areaServed: [
       { "@type": "Country", name: "Ecuador" },
-      { "@type": "City", name: "Guayaquil" },
-      { "@type": "City", name: "Samborondón" },
-      { "@type": "City", name: "Durán" },
-      { "@type": "City", name: "Daule" },
+      ...SITE.serviceAreas.map((city) => ({ "@type": "City", name: city })),
     ],
+    ...(offerCatalog.length
+      ? {
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Catálogo de productos Sika",
+            itemListElement: offerCatalog.map((name) => ({
+              "@type": "OfferCatalog",
+              name,
+            })),
+          },
+        }
+      : {}),
     ...(sameAs.length ? { sameAs } : {}),
+  };
+}
+
+/** FAQPage schema — las preguntas deben ser visibles en la página que lo emite. */
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export function faqPageJsonLd(faqs: FaqItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
   };
 }
 

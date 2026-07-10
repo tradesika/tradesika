@@ -22,13 +22,16 @@ export const SITE = {
   name: "Tradesika",
   legalName: "Tradesika — Distribuidor Autorizado Sika",
   /** Used in <title> templates and headers */
-  shortTagline: "Distribuidor autorizado Sika en Ecuador",
+  shortTagline: "Distribuidor autorizado Sika en Guayaquil, Ecuador",
   longTagline:
     "Soluciones Sika para construcción, impermeabilización y reparación en Guayaquil y todo el Ecuador.",
   description:
-    "Tradesika es distribuidor autorizado de productos Sika en Ecuador. Atendemos al por menor y al por mayor con impermeabilizantes, selladores, morteros, aditivos y sistemas para pisos industriales. Asesoría técnica especializada en Guayaquil.",
+    "¿Dónde comprar productos Sika en Guayaquil? Tradesika es distribuidor autorizado Sika en Ecuador: impermeabilizantes, selladores, morteros, aditivos y pisos industriales, al por menor y al por mayor, con asesoría técnica especializada.",
   locale: "es_EC",
   countryName: "Ecuador",
+
+  /** Ciudades con atención directa — alimenta areaServed (SEO local) y el FAQ */
+  serviceAreas: ["Guayaquil", "Samborondón", "Durán", "Daule"],
 
   address: {
     street: "Acuarela del Río Mz. 1179 Sl. 1-25",
@@ -37,8 +40,8 @@ export const SITE = {
     country: "Ecuador",
     countryCode: "EC",
     /** Exact store coordinates (map pin, directions y datos estructurados) */
-    latitude: -2.138083,
-    longitude: -79.882417,
+    latitude: -2.137944,
+    longitude: -79.882528,
   },
 
   phones: [

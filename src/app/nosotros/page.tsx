@@ -22,8 +22,13 @@ export const metadata: Metadata = buildMetadata({
   title: "Nosotros",
   path: "/nosotros",
   description:
-    "Conoce a Tradesika, distribuidor autorizado de Sika en Ecuador. Materiales de construcción con asesoría técnica especializada, atención al por menor y al por mayor en Guayaquil.",
-  keywords: ["Tradesika", "distribuidor Sika Ecuador", "quiénes somos"],
+    "Conoce a Tradesika, distribuidores especializados Sika en Guayaquil y distribuidor autorizado en Ecuador. Materiales de construcción con asesoría técnica, atención al por menor y al por mayor.",
+  keywords: [
+    "Tradesika",
+    "distribuidor Sika Ecuador",
+    "distribuidores especializados Sika en Guayaquil",
+    "quiénes somos",
+  ],
 });
 
 const VALUES = [

@@ -11,8 +11,10 @@ import {
   organizationJsonLd,
   localBusinessJsonLd,
   websiteJsonLd,
+  SEO_KEYWORDS,
 } from "@/lib/seo/seo";
 import { SITE, getSiteUrl } from "@/lib/site.config";
+import { getCategories } from "@/lib/catalog/catalog.repository";
 
 // Distinctive display + refined body pairing (not Inter/Roboto/Geist-sans)
 const archivo = Archivo({
@@ -41,15 +43,7 @@ export const metadata: Metadata = {
   creator: SITE.name,
   publisher: SITE.legalName,
   category: "Construcción",
-  keywords: [
-    "Sika Ecuador",
-    "distribuidor Sika Guayaquil",
-    "impermeabilizantes Ecuador",
-    "Sikaflex",
-    "morteros Sika",
-    "aditivos para concreto",
-    "materiales de construcción Guayaquil",
-  ],
+  keywords: [...SEO_KEYWORDS],
   alternates: { canonical: "/" },
   icons: { icon: "/favicon.ico" },
   robots: {
@@ -85,14 +79,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const categories = await getCategories();
   return (
     <html lang="es-EC">
       <body
         className={`${archivo.variable} ${manrope.variable} ${geistMono.variable} antialiased`}
       >
         <JsonLd data={organizationJsonLd()} />
-        <JsonLd data={localBusinessJsonLd()} />
+        <JsonLd data={localBusinessJsonLd(categories.map((c) => c.name))} />
         <JsonLd data={websiteJsonLd()} />
         <div className="flex min-h-screen flex-col">
           <SiteHeader />

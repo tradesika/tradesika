@@ -15,11 +15,17 @@ import { CatalogBrowser } from "@/components/catalog/CatalogBrowser";
 import { ASSETS } from "@/assets/files";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Catálogo de productos Sika",
+  title: "Catálogo de productos Sika en Guayaquil",
   path: "/productos",
   description:
-    "Catálogo completo de productos Sika en Ecuador: impermeabilizantes, selladores, morteros, aditivos para concreto, pisos industriales y más. Filtra por categoría y encuentra tu solución.",
-  keywords: ["catálogo Sika", "productos Sika Guayaquil", "Sika impermeabilizantes"],
+    "Compra productos Sika en Guayaquil: impermeabilizantes, selladores, morteros, aditivos para concreto, pisos industriales y más. Catálogo completo de Tradesika, distribuidor autorizado Sika en Ecuador.",
+  keywords: [
+    "catálogo Sika",
+    "productos Sika Guayaquil",
+    "comprar productos Sika",
+    "venta de productos Sika en Guayaquil",
+    "Sika impermeabilizantes",
+  ],
 });
 
 export default async function ProductosPage() {

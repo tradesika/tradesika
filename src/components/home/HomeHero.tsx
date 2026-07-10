@@ -31,12 +31,12 @@ export function HomeHero() {
         <div className="reveal lg:col-span-7">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold backdrop-blur">
             <ShieldCheck className="size-4 text-gold" />
-            Distribuidor autorizado Sika · Ecuador
+            Distribuidor autorizado Sika · Guayaquil, Ecuador
           </span>
 
           <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            Soluciones <span className="text-gradient-brand">Sika</span> para
-            construir mejor en Ecuador
+            Soluciones <span className="text-gradient-brand">Sika</span> en
+            Guayaquil para construir mejor
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">

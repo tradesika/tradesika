@@ -23,7 +23,13 @@ export const metadata: Metadata = buildMetadata({
   path: "/descargas",
   description:
     "Descarga catálogos, el Manual del Constructor Sika, fichas técnicas y hojas de seguridad. Toda la documentación Sika para aplicar correctamente en tu obra.",
-  keywords: ["fichas técnicas Sika", "manual del constructor Sika", "hojas de seguridad Sika"],
+  keywords: [
+    "fichas técnicas Sika",
+    "manual del constructor Sika",
+    "hojas de seguridad Sika",
+    "catálogo Sika Ecuador PDF",
+    "ficha técnica productos Sika Ecuador",
+  ],
 });
 
 const DOC_ICONS: Record<string, typeof FileText> = {

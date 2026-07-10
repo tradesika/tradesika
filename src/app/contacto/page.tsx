@@ -48,8 +48,14 @@ export const metadata: Metadata = buildMetadata({
   title: "Contacto",
   path: "/contacto",
   description:
-    "Contáctanos para cotizaciones, asesoría técnica y pedidos de productos Sika en Ecuador. Atención al por menor y al por mayor en Guayaquil. WhatsApp y teléfono.",
-  keywords: ["contacto Tradesika", "cotización Sika Ecuador", "Sika Guayaquil teléfono"],
+    "Cotiza productos Sika en Guayaquil por WhatsApp o teléfono. Asesoría técnica y pedidos al por menor y al por mayor con Tradesika, distribuidor autorizado Sika en Ecuador.",
+  keywords: [
+    "contacto Tradesika",
+    "cotización Sika Ecuador",
+    "cotizar productos Sika Guayaquil",
+    "Sika Guayaquil teléfono",
+    "WhatsApp Sika Guayaquil",
+  ],
 });
 
 export default function ContactoPage() {

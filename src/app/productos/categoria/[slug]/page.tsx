@@ -48,6 +48,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `${category.name} Sika`,
       `${category.name} Guayaquil`,
       `${category.name} Ecuador`,
+      `comprar ${category.name} Sika en Guayaquil`,
+      `dónde comprar ${category.name} en Guayaquil`,
     ],
   });
 }

@@ -12,14 +12,20 @@ import { BestSellers } from "@/components/home/BestSellers";
 import { WhyTradesika } from "@/components/home/WhyTradesika";
 import { AboutTeaser } from "@/components/home/AboutTeaser";
 import { HomeTechInfo } from "@/components/home/HomeTechInfo";
+import { FaqSection } from "@/components/home/FaqSection";
 import { HomeContactCTA } from "@/components/home/HomeContactCTA";
 
 export const metadata: Metadata = buildMetadata({
   title: "Inicio",
   path: "/",
   description:
-    "Tradesika, distribuidor autorizado Sika en Ecuador. Impermeabilizantes, selladores, morteros, aditivos y pisos industriales con asesoría técnica en Guayaquil. Al por menor y por mayor.",
-  keywords: ["productos Sika Ecuador", "impermeabilizante Guayaquil", "Sikaflex Ecuador"],
+    "¿Buscas dónde comprar productos Sika en Guayaquil? Tradesika es distribuidor autorizado Sika en Ecuador: impermeabilizantes, selladores, morteros, aditivos y pisos industriales, al por menor y por mayor, con asesoría técnica.",
+  keywords: [
+    "productos Sika Ecuador",
+    "impermeabilizante Guayaquil",
+    "Sikaflex Ecuador",
+    "comprar productos Sika Guayaquil",
+  ],
 });
 
 export default async function HomePage() {
@@ -38,6 +44,7 @@ export default async function HomePage() {
       <WhyTradesika />
       <AboutTeaser />
       <HomeTechInfo />
+      <FaqSection categoryNames={categories.map((c) => c.name)} />
       <HomeContactCTA />
     </>
   );

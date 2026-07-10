@@ -23,9 +23,12 @@ export const metadata: Metadata = buildMetadata({
   title: "Ubicación y horarios",
   path: "/ubicacion",
   description:
-    "Visítanos en Acuarela del Río, Guayaquil. Encuentra cómo llegar a Tradesika, distribuidor autorizado Sika en Ecuador: dirección, mapa, horarios de atención y teléfonos.",
+    "¿Dónde comprar Sika en Guayaquil? Visítanos en Acuarela del Río, norte de Guayaquil: dirección, mapa, cómo llegar, horarios y teléfonos de Tradesika, distribuidor autorizado Sika.",
   keywords: [
     "ubicación Tradesika",
+    "dónde comprar Sika en Guayaquil",
+    "tienda Sika Guayaquil",
+    "punto de venta Sika norte de Guayaquil",
     "Sika Guayaquil dirección",
     "distribuidor Sika Acuarela del Río",
   ],
