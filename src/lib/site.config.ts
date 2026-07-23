@@ -30,6 +30,9 @@ export const SITE = {
   locale: "es_EC",
   countryName: "Ecuador",
 
+  /** Google Tag Manager container ID (público, no es secreto) */
+  gtmId: "GTM-KZ63H3SF",
+
   /** Ciudades con atención directa — alimenta areaServed (SEO local) y el FAQ */
   serviceAreas: ["Guayaquil", "Samborondón", "Durán", "Daule"],
 
