@@ -89,29 +89,23 @@ export default async function RootLayout({
   return (
     <html lang="es-EC">
       <head>
-        {/* Google Tag Manager */}
-        <Script id="gtm-base" strategy="afterInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${SITE.gtmId}');`}
+        {/* Google Analytics (gtag.js) */}
+        <Script
+          id="ga4-lib"
+          src={`https://www.googletagmanager.com/gtag/js?id=${SITE.gaId}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${SITE.gaId}');`}
         </Script>
-        {/* End Google Tag Manager */}
+        {/* End Google Analytics */}
       </head>
       <body
         className={`${archivo.variable} ${manrope.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${SITE.gtmId}`}
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
-        {/* End Google Tag Manager (noscript) */}
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={localBusinessJsonLd(categories.map((c) => c.name))} />
         <JsonLd data={websiteJsonLd()} />
